@@ -1,0 +1,2 @@
+https://www.tensorflow.org/install/install_mac
+https://github.com/dmlc/tensorboard/blob/master/docs/tutorial/understanding-vanish-gradient.ipynb
