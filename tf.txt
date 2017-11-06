@@ -1,2 +1,6 @@
 https://www.tensorflow.org/install/install_mac
 https://github.com/dmlc/tensorboard/blob/master/docs/tutorial/understanding-vanish-gradient.ipynb
+
+https://www.youtube.com/watch?v=lAaCeiqE6CE&list=PLXO45tsB95cKI5AIlf5TxxFPzb-0zeVZ8
+https://www.youtube.com/watch?v=yZAmA00mF7s
+https://www.youtube.com/watch?v=vCNkQREqd2k&list=PLjSwXXbVlK6K2enbNmPGjnmB8QBRgCv5s
