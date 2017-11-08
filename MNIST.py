@@ -46,6 +46,7 @@ prediction = tf.nn.softmax(tf.matmul(L3drop,W4) + b4)
 # loss =tf.reduce_mean(tf.square(y-prediction))
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y,logits=prediction))
 
+
 train_step =tf.train.AdagradOptimizer(.2).minimize(loss)
 # AdagradOptimizer(.2).minimize(loss)
 # GradientDescentOptimizer(0.5).minimize(loss)
@@ -59,16 +60,25 @@ correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(prediction,1))
 # boolean -> float
 accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
 
+saver = tf.train.Saver()
 # train
 with tf.Session() as sess:
     sess.run(init)
-    for epoch in range(50):
+    for epoch in range(0):
         for batch in range(n_batch):
             batch_xs, batch_ys = mnist.train.next_batch(batch_size)
             sess.run(train_step,feed_dict={x:batch_xs,y:batch_ys,keep_prob:1.0})
-
+        #saver.save(sess,'test.ckpt',global_step=)
         acc = sess.run(accuracy,feed_dict={x:mnist.test.images,y:mnist.test.labels,keep_prob:1.0})
         print("#: "+str(epoch)+" accuracy: "+str(acc))
+
+    saver.save(sess,'model/test.ckpt')
+
+
+with tf.Session() as sess:
+    saver.restore(sess, "model/test.ckpt")
+    print(sess.run(accuracy,feed_dict={x:mnist.test.images,y:mnist.test.labels,keep_prob:1.0}))
+
 
 # AdagradOptimizer 0.2
 #: 0 accuracy: 0.9156
